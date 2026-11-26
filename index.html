@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="ko">
 <meta charset="utf-8">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFC000">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>타다닥</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -1037,6 +1041,9 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
 .jamo.bad.long { width: auto; min-width: 3.5rem; padding: 0 .7rem; white-space: nowrap; font-size: calc(22 * var(--px)); }
 @media (max-width: 640px) { .jamo.bad.long { min-width: 2.7rem; padding: 0 .5rem; font-size: calc(17 * var(--px)); } }
 /* ===== v54 새 기능 5가지 ===== */
+.nf-hint { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: #FFF4CC; border-radius: 22px; padding: 18px 24px; }
+.nf-hint p { margin: 0; font-size: calc(20 * var(--px)); font-weight: 600; }
+@media (max-width: 640px) { .nf-hint p { font-size: calc(18 * var(--px)); } }
 .menu.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 640px) { .menu.four { grid-template-columns: 1fr; } }
 .nf-pill { align-self: flex-start; background: rgba(255,255,255,.75); border-radius: 999px; padding: 2px 12px; font-weight: 700; font-size: calc(16 * var(--px)); }
@@ -1093,6 +1100,36 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
   body.nf-printing .nf-cert, body.nf-printing .nf-cert * { visibility: visible !important; }
   body.nf-printing .nf-cert { position: fixed; left: 0; top: 0; width: 210mm; height: 297mm; max-width: none; box-shadow: none; aspect-ratio: auto; }
 }
+/* 77. 앱 설치 페이지 */
+.inst-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.inst-card { background: var(--soft); border-radius: 22px; padding: 28px 32px; display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start; }
+.inst-ic { width: 56px; height: 56px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+.inst-ic svg { width: 30px; height: 30px; fill: none; stroke: #000; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.inst-card b { display: block; font-family: var(--font-display); font-weight: 700; font-size: calc(22 * var(--px)); line-height: 1.35; margin-bottom: 4px; }
+.inst-card p { margin: 0; font-size: calc(20 * var(--px)); color: var(--muted); }
+.inst-cta { display: grid; justify-items: center; gap: 12px; padding: 36px 24px; border-radius: 22px; background: var(--accent); text-align: center; }
+.inst-cta h2 { margin: 0; font-family: var(--font-display); font-size: calc(26 * var(--px)); }
+.inst-go { min-height: 64px; padding: 0 40px; border: 0; border-radius: 999px; color: #fff; font: 600 calc(22 * var(--px))/1.3 var(--font-body); cursor: pointer;
+  background: linear-gradient(90deg, #fff 0 50%, #000 50% 100%) no-repeat; background-size: 250% 100%; background-position: 100% 0; transition: background-position .35s, color .35s, box-shadow .35s; display: inline-flex; align-items: center; gap: 12px; }
+.inst-go:hover { background-position: 0 0; color: #000; box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+.inst-go[disabled] { cursor: default; }
+.inst-msg { margin: 0; font-size: calc(20 * var(--px)); font-weight: 600; max-width: 34em; }
+.inst-done { display: inline-flex; align-items: center; gap: 10px; min-height: 64px; padding: 0 32px; border-radius: 999px; background: #fff; font-weight: 700; font-size: calc(22 * var(--px)); }
+.inst-h2 { margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: calc(26 * var(--px)); }
+.inst-note { background: var(--soft); border-radius: 22px; padding: 24px 32px; }
+.inst-note b { font-size: calc(20 * var(--px)); }
+.inst-note p { margin: 6px 0 0; font-size: calc(20 * var(--px)); color: var(--muted); }
+/* 메뉴가 4개가 되어 휴대폰에서 한 줄에 들어가게 간격만 줄임 */
+@media (max-width: 760px) { .topnav { column-gap: 12px; } }
+@media (max-width: 420px) { .topnav { column-gap: 8px; } .topnav .nav-btn { font-size: .85rem; letter-spacing: -0.03em; } }
+@media (max-width: 640px) {
+  .inst-grid { grid-template-columns: 1fr; }
+  .inst-card { padding: 22px 24px; grid-template-columns: 48px 1fr; gap: 14px; }
+  .inst-ic { width: 48px; height: 48px; } .inst-ic svg { width: 26px; height: 26px; }
+  .inst-card b { font-size: calc(20 * var(--px)); } .inst-card p, .inst-msg, .inst-note p, .inst-note b { font-size: calc(18 * var(--px)); }
+  .inst-cta h2, .inst-h2 { font-size: calc(23 * var(--px)); }
+  .inst-go { width: 100%; justify-content: center; padding: 0 24px; } .inst-note { padding: 20px 24px; }
+}
 </style>
 
 <header class="topbar">
@@ -1102,6 +1139,7 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
       <button class="nav-btn" id="nav-guide" type="button"><span>이용방법</span></button>
       <button class="nav-btn" id="nav-faq" type="button"><span>자주 묻는 질문</span></button>
       <button class="nav-btn" id="nav-start" type="button"><span>내 연습방</span></button>
+      <button class="nav-btn" id="nav-install" type="button"><span>앱 설치</span></button>
     </nav>
     <div class="top-right">
     <button class="auth-btn" id="auth" type="button">로그인</button>
@@ -1145,6 +1183,7 @@ main h1.big-title { font-size: calc(48 * var(--px)); line-height: 1.3; }
       <ul class="i-menu">
         <li><a href="#" data-go="guide"><span>이용방법</span></a></li>
         <li><a href="#" data-go="faq"><span>자주 묻는 질문</span></a></li>
+        <li><a href="#" data-go="install"><span>앱 설치</span></a></li>
       </ul>
     </div>
   </header>
@@ -1388,7 +1427,7 @@ function go(screen) {
   if (isHelp(screen) && !isHelp(state.screen)) state.helpFrom = state.screen;
   state.screen = screen; render(); window.scrollTo(0, 0);
 }
-function isHelp(s) { return s === 'faq' || String(s).startsWith('guide'); }
+function isHelp(s) { return s === 'faq' || s === 'install' || String(s).startsWith('guide'); }
 function songById(id) { return SONGS.find(s => s.id === id) || EN_SONGS.find(s => s.id === id); }
 /* 한글 / 영문: 이름마다 마지막에 고른 쪽을 기억 */
 function getLang() { const m = store.settings.lang || {}; return (state.profile && m[state.profile.id]) || state.lang || 'ko'; }
@@ -1513,8 +1552,8 @@ function viewHome() {
       h('div', { class: 'hello' },
         h('h1', {}, state.profile.name + '님, 반가워요!')),
       h('p', { class: 'lead hello-sub' }, '오늘은 무엇을 해 볼까요?')),
-    nfRecoButton(), nfTodayCard(),
-    h('div', { class: 'menu four' },
+    nfOn() ? nfRecoButton() : null, nfOn() ? nfTodayCard() : null,
+    h('div', { class: nfOn() ? 'menu four' : 'menu' },
       h('button', { class: 'menu-btn main', type: 'button', onclick: () => startOrPick('jari-stages') },
         h('span', { class: 'num' }, '1'),
         h('b', {}, '자리연습'), h('span', { class: 'desc' }, '손가락 자리를 익히고 낱말을 쳐 봐요'), h('span', { class: 'go' }, '시작하기 →')),
@@ -1524,7 +1563,8 @@ function viewHome() {
       h('button', { class: 'menu-btn main', type: 'button', onclick: () => startOrPick('rhythm-songs') },
         h('span', { class: 'num' }, '3'),
         h('b', {}, '마우스 리듬게임'), h('span', { class: 'desc' }, '박자에 맞춰 클릭, 더블클릭, 드래그'), h('span', { class: 'go' }, '시작하기 →')),
-      nfChallengeCard()),
+      nfOn() ? nfChallengeCard() : null),
+    nfOn() ? null : nfAppHint(),
     h('h2', { class: 'home-guide-title' }, '연습별 안내'),
     h('div', { class: 'help-row' },
       h('button', { class: 'help-btn', type: 'button', onclick: () => go('guide-jari') }, h('i', { 'aria-hidden': 'true' }, '1'), '자리연습 안내'),
@@ -1589,12 +1629,77 @@ function viewGuidePage() {
     stepList(g.steps));
 }
 
+/* ===================== 화면: 앱 설치 (77) ===================== */
+// 크롬·엣지가 "설치할 수 있어요" 하고 알려 주면 그때 받아 두었다가 [지금 설치하기]에서 씀
+// 홈페이지용 index에서는 build-index.py가 웹앱 주소를 넣어요. 그러면 [지금 설치하기]가 웹앱 주소의 설치 페이지를 새 창으로 열어요.
+const WEBAPP_URL = '';
+let installPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installPrompt = e; if (state.screen === 'install') render(); });
+window.addEventListener('appinstalled', () => { installPrompt = null; state.installMsg = 'done'; if (state.screen === 'install') render(); });
+function isStandalone() { return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true; }
+function isIOS() { return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); }
+const INST_ICONS = {
+  desk: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><rect x="7" y="7.5" width="4" height="4" rx="1"/></svg>',
+  wifi: '<svg viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0M5.5 12a10 10 0 0 1 13 0M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1.2"/><path d="M3 3l18 18"/></svg>',
+  wide: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 12h10M7 12l2.5-2.5M7 12l2.5 2.5M17 12l-2.5-2.5M17 12l-2.5 2.5"/></svg>',
+  sync: '<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4"/></svg>',
+};
+function instIcon(k) { const d = h('span', { class: 'inst-ic', 'aria-hidden': 'true' }); d.innerHTML = INST_ICONS[k]; return d; }
+function doInstall() {
+  if (WEBAPP_URL) { window.open(WEBAPP_URL + '?install=1', '_blank', 'noopener'); state.installMsg = 'moved'; render(); return; }
+  if (state.installBusy) return;          // 여러 번 눌러도 처음 한 번만
+  if (installPrompt) {
+    state.installBusy = true;
+    const p = installPrompt; installPrompt = null;
+    p.prompt();
+    p.userChoice.then((c) => { state.installBusy = false; state.installMsg = c.outcome === 'accepted' ? 'done' : 'cancel'; render(); })
+      .catch(() => { state.installBusy = false; render(); });
+    return;
+  }
+  state.installMsg = isIOS() ? 'ios' : 'other'; render();
+}
+function viewInstall() {
+  const installed = !WEBAPP_URL && (isStandalone() || state.installMsg === 'done');
+  const msgs = {
+    cancel: '설치를 취소했어요. 나중에 언제든 다시 누를 수 있어요.',
+    ios: '아이폰·아이패드는 아래 "아이폰·아이패드에서는" 순서대로 설치해 주세요.',
+    moved: '새 창에 설치 페이지가 열렸어요. 거기서 [지금 설치하기]를 한 번 더 눌러 주세요.',
+    other: '이 브라우저에서는 바로 설치할 수 없어요. 크롬이나 엣지로 타다닥을 열고 다시 눌러 주세요.',
+  };
+  const cta = installed
+    ? h('div', { class: 'inst-cta' }, h('h2', {}, '설치가 끝났어요'), h('span', { class: 'inst-done' }, '✓ 이미 설치되어 있어요'),
+        h('p', { class: 'inst-msg' }, '바탕화면(또는 시작 메뉴)의 타다닥 아이콘을 눌러 열어요.'))
+    : h('div', { class: 'inst-cta' }, h('h2', {}, '바탕화면에 타다닥을 두어요'),
+        h('button', { class: 'inst-go', type: 'button', onclick: doInstall }, '지금 설치하기', h('span', { 'aria-hidden': 'true' }, '→')),
+        state.installMsg && msgs[state.installMsg] ? h('p', { class: 'inst-msg', role: 'status' }, msgs[state.installMsg]) : null);
+  return h('div', { class: 'stack' },
+    h('div', {}, h('h1', { class: 'big-title' }, '앱으로 설치하기'),
+      h('p', { class: 'lead' }, '설치하지 않아도 모든 기능을 쓸 수 있어요. 바탕화면에 두고 쓰고 싶은 분만 설치하세요.')),
+    h('div', { class: 'inst-grid' },
+      [['desk', '아이콘 한 번으로 열려요', '주소를 치거나 즐겨찾기를 찾지 않아도 돼요. 바탕화면의 타다닥을 누르면 바로 열려요.'],
+       ['wifi', '인터넷이 끊겨도 연습해요', '한 번 설치하면 교실 인터넷이 느리거나 끊겨도 연습할 수 있어요.'],
+       ['wide', '화면이 넓고 깔끔해요', '주소창과 탭이 없어서 글씨가 더 크게 보이고, 다른 사이트로 잘못 넘어가지 않아요.'],
+       ['sync', '기록도 그대로, 새 기능도 저절로', '지금까지의 연습 기록을 그대로 써요. 타다닥이 새로 바뀌면 설치한 앱도 저절로 바뀌어요.']]
+        .map(([k, t, d]) => h('div', { class: 'inst-card' }, instIcon(k), h('div', {}, h('b', {}, t), h('p', {}, d))))),
+    cta,
+    h('h2', { class: 'inst-h2' }, '이렇게 설치돼요'),
+    stepList([
+      WEBAPP_URL ? ['[지금 설치하기]를 두 번 눌러요', '여기서 누르면 설치 페이지가 새 창으로 열려요. 거기서 한 번 더 눌러요.'] : ['[지금 설치하기]를 눌러요', '크롬이나 엣지에서 눌러 주세요.'],
+      ['작은 창에서 [설치]를 눌러요', '화면 위쪽에 "앱을 설치할까요?" 창이 떠요.'],
+      ['바탕화면 아이콘으로 열어요', '다음부터는 바탕화면(또는 시작 메뉴)의 타다닥 아이콘을 누르면 돼요.'],
+    ]),
+    h('div', { class: 'inst-note' }, h('b', {}, '아이폰·아이패드에서는'),
+      h('p', {}, '사파리로 타다닥을 열고, 아래쪽 공유 버튼(네모에 위 화살표)을 누른 뒤 [홈 화면에 추가]를 눌러요.')),
+    h('div', { class: 'inst-note' }, h('b', {}, '지우고 싶을 때'),
+      h('p', {}, '타다닥 앱을 열고 오른쪽 위 ⋯ 메뉴에서 [제거]를 눌러요. 앱을 지워도 홈페이지에서는 계속 쓸 수 있어요.')));
+}
+
 /* ===================== 화면: 자주 묻는 질문 (초안 문구) ===================== */
 const FORM_URL = 'https://forms.gle/2DgdYrgy8epWSbj16';
 const FAQ = [
   ['시작하기', [
     ['무료인가요?', '네, 무료예요. 누구나 바로 쓸 수 있어요.'],
-    ['설치해야 하나요?', '아니요. 크롬이나 엣지 같은 인터넷 브라우저에서 바로 열려요.'],
+    ['설치해야 하나요?', '아니요. 크롬이나 엣지 같은 인터넷 브라우저에서 바로 열려요. 바탕화면 아이콘으로 쓰고 싶으면 맨 위 [앱 설치]에서 설치할 수 있어요.'],
     ['회원가입이나 비밀번호가 필요한가요?', '필요 없어요. 이름만 고르면 바로 시작해요. 그래서 같은 컴퓨터를 쓰는 사람은 누구나 이름을 누를 수 있어요.'],
     ['어떤 순서로 연습하면 좋아요?', '자리연습 → 가사 타자연습 → 마우스 리듬게임 순서를 권해요.'],
   ]],
@@ -1719,7 +1824,7 @@ function viewRecords() {
       h('button', { class: 'tab', type: 'button', 'aria-pressed': String(tab === id), onclick: () => { state.recTab = id; render(); } }, name))),
     hasLang ? h('div', { class: 'row' }, langSeg()) : null,
     all.length ? h('div', { class: 'card stack' }, charts, recordTable(all.slice().reverse())) : h('p', { class: 'empty' }, '아직 이 연습의 기록이 없어요.'),
-    nfRecordsExtra(),
+    nfOn() ? nfRecordsExtra() : null,
     h('p', { class: 'note' }, '기록은 이 컴퓨터의 브라우저에만 저장돼요. 브라우저 기록을 지우면 그래프도 함께 지워져요.'));
 }
 
@@ -2642,7 +2747,7 @@ let cleanup = null;   // 화면을 떠날 때 정리할 일 (타이머, 키 입�
 function render() {
   if (cleanup) { const c = cleanup; cleanup = null; c(); }
   if (state.screen === 'names') state.screen = 'home';
-  if (!['intro', 'home', 'faq'].includes(state.screen) && !isHelp(state.screen) && !state.profile) state.screen = 'home';
+  if (!['intro', 'home', 'faq', 'install'].includes(state.screen) && !isHelp(state.screen) && !state.profile) state.screen = 'home';
   const onIntro = state.screen === 'intro';
   document.getElementById('intro').hidden = !onIntro;
   document.querySelector('header.topbar').hidden = onIntro;
@@ -2659,13 +2764,14 @@ function render() {
   auth.textContent = signedIn ? '로그아웃' : '로그인';
   const practiceScreens = ['home', 'songs', 'practice', 'result', 'records', 'jari-stages', 'jari', 'jari-result', 'rhythm-songs', 'rhythm-stage', 'rhythm', 'rhythm-result', 'guide-jari', 'guide-gasa', 'guide-rhythm', 'nf-reco', 'nf-ch', 'nf-ch-result', 'nf-cert'];
   document.getElementById('nav-start').setAttribute('aria-current', practiceScreens.includes(state.screen) ? 'page' : 'false');
-  const views = { home: viewHome, songs: viewSongs, practice: viewPractice, result: viewResult, records: viewRecords, guide: viewGuide, faq: viewFaq,
+  const views = { install: viewInstall, home: viewHome, songs: viewSongs, practice: viewPractice, result: viewResult, records: viewRecords, guide: viewGuide, faq: viewFaq,
     'guide-jari': viewGuidePage, 'guide-gasa': viewGuidePage, 'guide-rhythm': viewGuidePage,
     'jari-stages': viewJariStages, jari: viewJari, 'jari-result': viewJariResult,
     'rhythm-songs': viewRhythmSongs, 'rhythm-stage': viewRhythmStage, rhythm: viewRhythm, 'rhythm-result': viewRhythmResult,
     'nf-reco': nfViewReco, 'nf-ch': nfViewChallenge, 'nf-ch-result': nfViewChResult, 'nf-cert': nfViewCert };
   document.getElementById('nav-guide').setAttribute('aria-current', state.screen === 'guide' ? 'page' : 'false');
   document.getElementById('nav-faq').setAttribute('aria-current', state.screen === 'faq' ? 'page' : 'false');
+  document.getElementById('nav-install').setAttribute('aria-current', state.screen === 'install' ? 'page' : 'false');
   app.replaceChildren(views[state.screen]());
   if (window.taToTopUpdate) window.taToTopUpdate();
 }
@@ -2696,6 +2802,7 @@ function goHelp(screen) {
 }
 document.getElementById('nav-guide').addEventListener('click', () => goHelp('guide'));
 document.getElementById('nav-faq').addEventListener('click', () => goHelp('faq'));
+document.getElementById('nav-install').addEventListener('click', () => { state.installMsg = null; goHelp('install'); });
 // 홈페이지 버튼들
 document.querySelectorAll('[data-go]').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); go(el.dataset.go); }));
 // 홈페이지: 휠을 내린 만큼 글·카드·그림이 아래에서 올라오며 나타나기 (요소마다 조금씩 순서대로). 움직임 줄이기 설정이면 하지 않음
@@ -2737,6 +2844,13 @@ document.querySelectorAll('[data-go]').forEach(el => el.addEventListener('click'
 /* ===================== v54: 새 기능 5가지 (오늘의 한 줄 · 연습 추천 · 1분 도전 · 칭찬 상장 · 기록 옮기기) =====================
    기준: new-features-plan.md (작동 기준 + 7장 예외 상황). 서버·외부 API 없음.
    새 값은 store.settings 안에만 저장: challenge[이름id] = 1분 도전 최고 기록, todayDone[이름id] = 오늘의 한 줄 다 친 날 */
+/* 새 기능은 설치한 앱에서만 (2026-11-26 은영님). 깃허브 주소를 브라우저로 열면 숨기고 [앱 설치] 안내만 보여요.
+   깃허브가 아닌 곳(미리보기·내려받은 파일)에서는 확인할 수 있게 보여요. */
+function nfOn() { return !/github\.io$/.test(location.hostname) || isStandalone(); }
+function nfAppHint() {
+  return h('div', { class: 'nf-hint' }, h('p', {}, '앱으로 설치하면 오늘의 한 줄, 1분 도전, 연습 추천, 칭찬 상장도 쓸 수 있어요.'),
+    h('button', { class: 'btn nf-white', type: 'button', onclick: () => { state.installMsg = null; goHelp('install'); } }, '앱 설치 보기'));
+}
 const NF_PROVERBS = ["가는 말이 고와야 오는 말이 곱다", "티끌 모아 태산", "낮말은 새가 듣고 밤말은 쥐가 듣는다", "세 살 버릇 여든까지 간다", "백지장도 맞들면 낫다", "천 리 길도 한 걸음부터", "콩 심은 데 콩 나고 팥 심은 데 팥 난다", "원숭이도 나무에서 떨어진다", "돌다리도 두들겨 보고 건너라", "등잔 밑이 어둡다", "소 잃고 외양간 고친다", "우물 안 개구리", "하늘이 무너져도 솟아날 구멍이 있다", "호랑이도 제 말 하면 온다", "발 없는 말이 천 리 간다", "아니 땐 굴뚝에 연기 날까", "같은 값이면 다홍치마", "누워서 떡 먹기", "식은 죽 먹기", "금강산도 식후경", "벼는 익을수록 고개를 숙인다", "시작이 반이다", "백 번 듣는 것이 한 번 보는 것만 못하다", "말 한마디로 천 냥 빚을 갚는다", "구슬이 서 말이라도 꿰어야 보배", "가는 날이 장날", "꿩 먹고 알 먹고", "도토리 키 재기", "바늘 도둑이 소도둑 된다", "사공이 많으면 배가 산으로 간다", "서당 개 삼 년이면 풍월을 읊는다", "열 번 찍어 안 넘어가는 나무 없다", "윗물이 맑아야 아랫물이 맑다", "작은 고추가 더 맵다", "쥐구멍에도 볕 들 날 있다", "하룻강아지 범 무서운 줄 모른다", "개천에서 용 난다", "고생 끝에 낙이 온다", "공든 탑이 무너지랴", "아는 길도 물어 가라", "낫 놓고 기역 자도 모른다", "될성부른 나무는 떡잎부터 알아본다", "마른하늘에 날벼락", "빈 수레가 요란하다", "무소식이 희소식", "웃는 얼굴에 침 못 뱉는다", "제 눈에 안경", "지렁이도 밟으면 꿈틀한다", "친구 따라 강남 간다", "칼로 물 베기", "하나를 보면 열을 안다", "형만 한 아우 없다", "말이 씨가 된다", "자라 보고 놀란 가슴 솥뚜껑 보고 놀란다", "찬물도 위아래가 있다", "콩 한 쪽도 나누어 먹는다", "비 온 뒤에 땅이 굳어진다", "남의 떡이 더 커 보인다", "개구리 올챙이 적 생각 못 한다", "쇠뿔도 단김에 빼라"];
 const NF_LINES = SONGS.filter(s => s.cat === 'jeollae' || s.cat === 'foreign').flatMap(s => s.lines.filter(l => l.length <= 16).map(l => [l, s.title]));
 const NF_RH_SEQ = ['click-slow', 'double-slow', 'drag-slow', 'mix-slow', 'mix-normal', 'mix-fast'];
@@ -3235,6 +3349,7 @@ async function nfPng() {
 /* ---------- 화면 이동 연결 ---------- */
 const nfAppGo = go;
 go = function (screen) {
+  if (!nfOn() && /^nf-/.test(screen)) screen = 'home';   // 새 기능은 설치한 앱에서만
   if (nfRunning() && screen !== 'nf-ch-result') { nfAskQuit(() => { NF.ch = null; nfAppGo(screen); }); return; }
   if (screen === 'nf-ch') { if (!state.profile) { openPicker('nf-ch'); return; } NF.ch = null; }
   if (screen === 'nf-reco') { if (!state.profile) { openPicker('nf-reco'); return; } nfInitReco(); }
@@ -3250,6 +3365,7 @@ document.addEventListener('click', (e) => {
   nfAskQuit(() => { NF.ch.done = true; t.click(); });
 }, true);
 
+if (/[?&]install=1/.test(location.search)) state.screen = 'install';   // 홈페이지의 [지금 설치하기]로 왔을 때
 applyScale(store.settings.scale || 1);
 render();
 
@@ -3270,4 +3386,5 @@ render();
   update();
 })();
 </script>
+<script>if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));</script>
 </html>
